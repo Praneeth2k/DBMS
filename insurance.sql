@@ -33,6 +33,6 @@ select count(distinct driver_id) CNT from PARTICIPATED,ACCIDENT where PARTICIPAT
 select count(PARTICIPATED.reg_num) count from PARTICIPATED,CAR,ACCIDENT where PARTICIPATED.report_num=ACCIDENT.report_num and CAR.reg_num=PARTICIPATED.reg_num and model='Audi';
 select * from accident;
 
-
+select name from PERSON where driver_id in(select driver_id from participated where damage_amount>(select avg(damage_amount) from participated));
 
 
