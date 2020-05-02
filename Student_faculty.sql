@@ -21,3 +21,25 @@ select * from CLASS;
 
 insert into enrolled values(19,'DBMS'),(13,'DBMS'),(023,'TFC'),(41,'AI'),(51,'ED');
 select * from enrolled;
+                                                                       
+SELECT DISTINCT S.sname
+FROM STUDENT S, CLASS C, ENROLLED E, FACULTY F
+WHERE S.snum = E.snum AND E.cname = C.cname AND C.fid = F.fid AND
+F.fname = ‘KVN’ AND S.lvl = ‘JR’;
+                                                                       
+SELECT C.cname
+FROM CLASS C
+WHERE C.room = ‘203’
+OR C.cname IN (SELECT E.cname
+FROM Enrolled E
+GROUP BY E.cname
+HAVING COUNT (*) >= 5);
+                                                                       
+ SQL&gt;SELECT DISTINCT S.sname
+FROM Student S
+WHERE S.snum IN (SELECT E1.snum
+
+FROM Enrolled E1, Enrolled E2, Class C1, Class C2
+WHERE E1.snum = E2.snum AND E1.cname &lt;&gt; E2.cname
+AND E1.cname = C1.cname
+AND E2.cname = C2.cname AND C1.meets_at = C2.meets_at);                                                                      
